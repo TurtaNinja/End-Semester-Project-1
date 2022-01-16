@@ -14,4 +14,4 @@ How to make program run in background?
 How to use Data from api to create custom statements that are added to message sent through mail bot
 
 
-After project ends: ADD WHATSAPP
+After project ends: ADD WHATSAPP and Facebook
