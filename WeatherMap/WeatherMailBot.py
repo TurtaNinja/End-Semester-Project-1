@@ -104,7 +104,7 @@ WeatherFont4=('poppins',20)
 #Main heading
 WeatherCanvas.create_text(440,50,text="Weather App",font=WeatherFont,fill="White")
 #temperature
-Temperature=19
+
 WeatherCanvas.create_text(310,180,text=str(Temperature)+"°C",font=WeatherFont3,fill="White")
 #logo of weather
 logo1=gui.PhotoImage(file="icon3.png")
