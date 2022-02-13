@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Feb  3 17:00:30 2022
-
-@author: Muhammad Talal Faiz
-"""
 import tkinter as gui
 import requests
 # A module that allows sending http requests. We will use it to make the API Call.
@@ -72,14 +66,14 @@ def GetWeatherDataCurrent():
 def Message():
     global Messsage
     if ForecastedWeather in ["Rain","Drizzle","Snow","Thunderstorm"]:
-        Messsage=f"Don't forget to take your Umbrella with you !!\nThe chance of {Description} is {int(Precipitation*100)}%"
+        Messsage=f"Don't forget to take your Umbrella with you !!\nThe chances of {ForecastedWeather} are {int(Precipitation*100)}%"
        
     elif ForecastedWeather=="Clouds" and Precipitation>0.4:
-        Messsage=f"Don't forget to take your umbrella with you as it is Cloudy today and chances of rain are {int(Precipitation*100)}%"
+        Messsage=f"Don't forget to take your umbrella with you as it is Cloudy Today and chances of rain are {int(Precipitation*100)}%"
     elif ForecastedWeather=="Clouds" and Precipitation<0.4:
-        Messsage="It is Cloudy Today. Enjoy !!"
+        Messsage="It is Cloudy Today.\nThere is no chance of rain. Enjoy !!"
     else:
-        Messsage="The weather today is Clear. Enjoy !!"
+        Messsage="The weather is Clear Today.\nEnjoy !!"
         
 GetWeatherDataDaily()
 GetWeatherDataCurrent()
@@ -110,16 +104,29 @@ WeatherFont4=('poppins',20)
 #Main heading
 WeatherCanvas.create_text(440,50,text="Weather App",font=WeatherFont,fill="White")
 #temperature
+Temperature=19
 WeatherCanvas.create_text(310,180,text=str(Temperature)+"°C",font=WeatherFont3,fill="White")
 #logo of weather
 logo1=gui.PhotoImage(file="icon3.png")
 WeatherCanvas.create_image(100,225,image=logo1)
 #Line 
 WeatherCanvas.create_text(192,225,text="|",font=('Times New Roman',180),fill='White')
-
-
-WeatherCanvas.create_text(312,280,text=str(Description),font=WeatherFont2,fill="Black")
-WeatherCanvas.create_text(392,330,text="WindSpeed: "+str(Wind)+"kph  |"+"  Feels like "+str(FeelsLike)+"°C",font=8)
+#Displaying descryption"
+if ForecastedWeather=='Clear':
+    WeatherCanvas.create_text(315,280,text='Clear Sky',font=WeatherFont2,fill="Black")
+    WeatherCanvas.create_text(380,330,text="WindSpeed: "+str(Wind)+" kph  |"+"  Feels like "+str(FeelsLike)+"°C",font=8)
+    logo1=gui.PhotoImage(file="icon1.png")
+    WeatherCanvas.create_image(92,235,image=logo1)
+if ForecastedWeather=='Clouds':
+    WeatherCanvas.create_text(297,280,text='Cloudy',font=WeatherFont2,fill="Black")
+    WeatherCanvas.create_text(380,330,text="WindSpeed: "+str(Wind)+" kph  |"+"  Feels like "+str(FeelsLike)+"°C",font=8)
+    logo1=gui.PhotoImage(file="icon2.png")
+    WeatherCanvas.create_image(100,225,image=logo1)
+if ForecastedWeather in ['Rain','Drizzle','Thunderstorm']:
+    WeatherCanvas.create_text(285,280,text='Rainy',font=WeatherFont2,fill="Black")
+    WeatherCanvas.create_text(380,330,text="WindSpeed: "+str(Wind)+" kph  |"+"  Feels like "+str(FeelsLike)+"°C",font=8)
+    logo1=gui.PhotoImage(file="icon3.png")
+    WeatherCanvas.create_image(95,245,image=logo1)
 #Putting Text
 WeatherFont=('Bookman Old Style',30,'bold')
 WeatherFont2=('poppins',20,'bold')
@@ -131,10 +138,6 @@ EmailEntry=gui.Entry(window,width=30,justify="center",border=0,font=('Arial',12)
 WeatherCanvas.create_window(390,405,window=EmailEntry)
 Subscribe=gui.Button(window,text="Subscribe !",command=filewrite,border=0,width=15,font=('Arial',12))
 WeatherCanvas.create_window(390,450,window=Subscribe)
-window.mainloop() 
-
-
-    #API is a software that acts as an intermediary between 2 applications and allows one application to access services provided by the other.
-    #In this case we are retrieving data on a webpage on a web server stored in JSON Format and providing it to our application using the API or Application Programming Interface
-
-    
+window.mainloop()
+              #API is a software that acts as an intermediary between 2 applications and allows one application to access services provided by the other.
+              #In this case we are retrieving data on a webpage on a web server stored in JSON Format and providing it to our application using the API or Application Programming Interface
